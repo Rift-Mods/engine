@@ -1,0 +1,12 @@
+{
+    "name": "testmod",
+    "changes":
+    [
+        {
+            "class": "Door",
+            "method": "Start",
+            "at": "HEAD",
+            "file": "test.cs"
+        }
+    ]
+}
