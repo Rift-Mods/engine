@@ -31,13 +31,11 @@ if len(sys.argv) > 1:
             output_changes = []
             with ZipFile(f'{manifest["name"]}.zip', 'w') as myzip:
                 for change in manifest['changes']:
-                    if os.path.exists(os.path.join(mod,change['org'])) and os.path.exists(os.path.join(RIFT_SOURCE,"Assembly-CSharp/",change['dest'])):
+                    if os.path.exists(os.path.join(mod,change['org'])) and os.path.exists(os.path.join(RIFT_SOURCE,change['dest'])):
                         with open(os.path.join(mod,change['org']), 'rt') as f1:
-                            with open(os.path.join(RIFT_SOURCE,"Assembly-CSharp/",change['dest']), 'rt') as f2:
+                            with open(os.path.join(RIFT_SOURCE,change['dest']), 'rt') as f2:
                                 f1_clean = cleanup(f1.readlines())
                                 f2_clean = cleanup(f2.readlines())
-                                with open('test22','wt') as ffff:
-                                    ffff.write(f1_clean)
                                 dmp = diff_match_patch()
                                 patches = dmp.patch_make(f2_clean,f1_clean)[1:]
 
