@@ -1,0 +1,10 @@
+{
+    "name": "testmod",
+    "changes":
+    [
+        {
+            "org": "test.cs",
+            "dest": "DoubleJump.cs"
+        }
+    ]
+}

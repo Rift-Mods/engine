@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 loguru = "*"
+diff-match-patch = "*"
 
 [dev-packages]
 
