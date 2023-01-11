@@ -1,9 +1,0 @@
-{
-    "name": "duel weild breaker",
-    "changes": [
-        {
-            "org": "test.cs",
-            "dest": "DualWieldManager.cs"
-        }
-    ]
-}

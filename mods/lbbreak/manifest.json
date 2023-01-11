@@ -1,0 +1,13 @@
+{
+    "name": "leader board hack",
+    "changes": [
+        {
+            "org": "lb.cs",
+            "dest": "Highscores.cs"
+        },
+        {
+            "org": "hs.cs",
+            "dest": "Highscore.cs"
+        }
+    ]
+}

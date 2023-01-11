@@ -16,11 +16,10 @@ from diff_match_patch import diff_match_patch
 RIFT_PATH = './test' # rift dir
 RIFT_SOURCE = './source' # the dir to decompile to
 BAD_SHIT = [
-        'mscorlib.dll', # dont touch this it breaks everything
-        'System.Core.dll', # dont touch this it breaks everything
         'Assembly-CSharp.dll' # dont touch this it breaks everything
 ] # dont touch this it breaks everything
 #ENV
+
 
 
 linux = False
@@ -30,12 +29,14 @@ RIFT_SOURCE = os.path.abspath(RIFT_SOURCE)
 
 if platform == "linux" or platform == "linux2":
     linux = True
-
+    BAD_SHIT.append('mscorlib.dll')
+    BAD_SHIT.append('System.Core.dll')
 
 def cleanup(data):
     output = []
     for line in data:
-            line = line.split("//")[0]
+            if not ("\"" in line or "\'" in line):
+                line = line.split("//")[0]
             line = line.strip()
             if len(line) > 0 and not line.startswith("//"):
                 output.append(f"{line}\n")
@@ -58,7 +59,7 @@ def decompile():
                 os.makedirs(RIFT_SOURCE)
         logger.info("Starting decompile in 1 second")
         time.sleep(1)
-        args = ['ilspycmd','-p', f'-o {RIFT_SOURCE}' , os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"), '-lv CSharp1']
+        args = ['ilspycmd','-p', f'-o {RIFT_SOURCE}' , os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"), '-lv CSharp8_0']
         logger.info(args)
         subprocess.run(args)
         logger.info("Decompiled")
@@ -66,15 +67,26 @@ def decompile():
 def compile():
 
         cmd1 = ['dotnet','restore',RIFT_SOURCE]
-        cmd2 = ['msbuild', RIFT_SOURCE]
-        # if linux:
-        #         cmd.append('mcs')
-        # for file in os.listdir(os.path.join(RIFT_PATH,"RIFT_Data/Managed/")):
-        #         if file.endswith(".dll") and not file.lower() in BAD_SHIT:
-        #                 cmd.append(f"/r:{os.path.join(RIFT_PATH,'RIFT_Data/Managed/',file)}")
-        # cmd.append(os.path.join(RIFT_SOURCE,"**.cs"))
-        # cmd.append("/target:library")
-        # cmd.append("/out:Assembly-CSharp.dll")
+        # cmd2 = ['msbuild', RIFT_SOURCE]
+        cmd2 = []
+        if linux:
+                cmd2.append('csc')
+        else:
+                cmd2.append('dotnet')
+                cmd2.append("C:\\Program Files\\dotnet\sdk\\7.0.100\Roslyn\\bincore\\csc.dll")
+
+        cmd2.append("/target:library")
+        cmd2.append("/out:Assembly-CSharp.dll")
+        for file in os.listdir(os.path.join(RIFT_PATH,"RIFT_Data/Managed/")):
+                if file.endswith(".dll") and not file.lower() in BAD_SHIT:
+                        cmd2.append(f"/r:{os.path.join(RIFT_PATH,'RIFT_Data/Managed/',file)}")
+        files_out = []
+        for root, _dirs, files in os.walk(RIFT_SOURCE, topdown=False):
+                for name in files:
+                        if name.endswith(".cs"):
+                                cmd2.append(os.path.join(root, name))
+
+
 
         logger.info("Starting compile in 1 second")
         time.sleep(1)
@@ -102,7 +114,7 @@ def restore():
 if len(sys.argv) > 1:
         command = sys.argv[1]
         if command == 'add':
-                restore()
+                # restore() // dont restore
                 decompile()
                 dmp = diff_match_patch()
                 for mod in sys.argv[2:]:
@@ -119,7 +131,9 @@ if len(sys.argv) > 1:
                                                 with open(os.path.join(RIFT_SOURCE,change['dest']), 'rt') as ff:
                                                         unpatched_data = cleanup(ff.readlines())
                                                         patched_data = dmp.patch_apply(patches,unpatched_data)
-                                                        # print(patched_data[1])
+                                                        print(unpatched_data)
+                                                        print("*************")
+                                                        print(patched_data)
                                                         if all(patched_data[1]) == True:
                                                                 with open(os.path.join(RIFT_SOURCE,change['dest']), 'wt') as fff:
                                                                         fff.write(patched_data[0])
@@ -136,6 +150,8 @@ if len(sys.argv) > 1:
                 # shutil.rmtree(RIFT_SOURCE)
                 logger.info("Moving file")
                 if not os.path.exists(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll.bak")): os.rename(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"), os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll.bak"))
+                if os.path.exists(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll")): os.remove(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"))
+                time.sleep(1)
                 shutil.move('Assembly-CSharp.dll', os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"))
 
         if command == 'restore':

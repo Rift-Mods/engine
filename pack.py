@@ -37,7 +37,7 @@ if len(sys.argv) > 1:
                                 f1_clean = cleanup(f1.readlines())
                                 f2_clean = cleanup(f2.readlines())
                                 dmp = diff_match_patch()
-                                patches = dmp.patch_make(f2_clean,f1_clean)[1:]
+                                patches = dmp.patch_make(f2_clean,f1_clean)
 
                                 myzip.writestr(f"{os.path.splitext(change['org'])[0]}.diff",dmp.patch_toText(patches))
                                 output_changes.append({'org': f"{os.path.splitext(change['org'])[0]}.diff", 'dest': change['dest']})
