@@ -109,13 +109,14 @@ def restore():
                 shutil.copy(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll.bak"), os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"))
         else:
                 logger.critical("No bacups")
-if len(sys.argv) > 1:
+if len(sys.argv) > 2:
         command = sys.argv[1]
+        RIFT_PATH = sys.argv[2]
         if command == 'add':
                 # restore() // dont restore easy way to fix --no-restore ¯\_(ツ)_/¯
                 decompile()
                 dmp = diff_match_patch()
-                for mod in sys.argv[2:]:
+                for mod in sys.argv[3:]:
                         if os.path.exists(mod):
                                 with ZipFile(mod,'r') as f:
                                         logger.info("file loaded")
