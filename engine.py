@@ -58,7 +58,6 @@ def decompile():
         else:
                 os.makedirs(RIFT_SOURCE)
         logger.info("Starting decompile in 1 second")
-        time.sleep(1)
         args = ['ilspycmd','-p', f'-o {RIFT_SOURCE}' , os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"), '-lv CSharp8_0']
         logger.info(args)
         subprocess.run(args)
@@ -89,8 +88,7 @@ def compile():
 
 
         logger.info("Starting compile in 1 second")
-        time.sleep(1)
-        subprocess.run(cmd1)
+        # subprocess.run(cmd1) ¯\_(ツ)_/¯
         logger.info("Project restored!")
         subprocess.run(cmd2)
         logger.info("Compiled!")
@@ -114,7 +112,7 @@ def restore():
 if len(sys.argv) > 1:
         command = sys.argv[1]
         if command == 'add':
-                # restore() // dont restore
+                # restore() // dont restore easy way to fix --no-restore ¯\_(ツ)_/¯
                 decompile()
                 dmp = diff_match_patch()
                 for mod in sys.argv[2:]:
@@ -151,7 +149,6 @@ if len(sys.argv) > 1:
                 logger.info("Moving file")
                 if not os.path.exists(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll.bak")): os.rename(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"), os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll.bak"))
                 if os.path.exists(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll")): os.remove(os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"))
-                time.sleep(1)
                 shutil.move('Assembly-CSharp.dll', os.path.join(RIFT_PATH,"RIFT_Data/Managed/Assembly-CSharp.dll"))
 
         if command == 'restore':
