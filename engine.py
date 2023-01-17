@@ -14,8 +14,8 @@ from diff_match_patch import diff_match_patch
 import xml.etree.ElementTree as ET
 #ENV
 
-RIFT_PATH = './test' # rift dir
-RIFT_SOURCE = './source' # the dir to decompile to
+RIFT_PATH = r'./test' # rift dir
+RIFT_SOURCE = r'./source' # the dir to decompile to
 BAD_SHIT = [
         'Assembly-CSharp.dll', # dont touch this it breaks everything
         'System.Core.dll'
