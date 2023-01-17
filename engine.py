@@ -41,7 +41,7 @@ def cleanup(data):
                 line = line.split("//")[0]
             line = line.strip()
             if len(line) > 0 and not line.startswith("//"):
-                output.append(f"{line}\n")
+                output.append(f'{line}\n')
     return ''.join(output)
 
 def check_ilspy():
@@ -189,7 +189,7 @@ if len(sys.argv) > 2:
 
         if command == 'restore':
                 restore()
-        if command == 'get_source':
+        if command == 'getsource':
                 decompile()
         if command == 'compile':
                 compile()
