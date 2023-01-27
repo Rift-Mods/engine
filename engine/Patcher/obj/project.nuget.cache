@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "npkFdnmrkb7z/4piIe9HDgNf4O3kYdf4jbrFj2fV2lrt/+80cvX4y0+P5oEYn/npe0N2g8EumNSuSTgtm3GVOQ==",
+  "success": true,
+  "projectFilePath": "/home/nikkuss/projects/riftworld/modding-engine-sad/engine/Patcher/Patcher.csproj",
+  "expectedPackageFiles": [
+    "/home/nikkuss/.nuget/packages/lib.harmony/2.2.2/lib.harmony.2.2.2.nupkg.sha512",
+    "/home/nikkuss/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "/home/nikkuss/.nuget/packages/microsoft.netframework.referenceassemblies.net48/1.0.2/microsoft.netframework.referenceassemblies.net48.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

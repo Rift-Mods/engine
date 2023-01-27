@@ -1,0 +1,2 @@
+[workspace]
+members = [ "engine/RiftModding", "engine/Proxy" ]

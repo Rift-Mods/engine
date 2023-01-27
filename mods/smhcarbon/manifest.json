@@ -1,9 +1,0 @@
-{
-    "name": "smhcarbon",
-    "changes": [
-        {
-            "org": "hehe.cs",
-            "dest": "GauntletManager.cs"
-        }
-    ]
-}

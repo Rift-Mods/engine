@@ -1,7 +1,5 @@
-/dnSpy
-/source
-/test
-dnSpy.zip
-
-
-/g
+/target
+run.sh
+build.sh
+testgame
+engine/TestPatch

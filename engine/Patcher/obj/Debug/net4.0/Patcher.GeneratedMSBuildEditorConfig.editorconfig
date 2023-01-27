@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Patcher
+build_property.ProjectDir = /home/nikkuss/projects/riftworld/modding-engine/Patcher/

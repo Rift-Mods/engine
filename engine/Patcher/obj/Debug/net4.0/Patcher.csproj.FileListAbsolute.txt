@@ -1,0 +1,11 @@
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.csproj.AssemblyReference.cache
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.GeneratedMSBuildEditorConfig.editorconfig
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.AssemblyInfoInputs.cache
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.AssemblyInfo.cs
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.csproj.CoreCompileInputs.cache
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/bin/Debug/net4.0/Patcher.dll
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/bin/Debug/net4.0/Patcher.pdb
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/bin/Debug/net4.0/0Harmony.dll
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.csproj.CopyComplete
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.dll
+/home/nikkuss/projects/riftworld/modding-engine/Patcher/obj/Debug/net4.0/Patcher.pdb

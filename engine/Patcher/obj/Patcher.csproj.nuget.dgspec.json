@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/nikkuss/projects/riftworld/modding-engine-sad/engine/Patcher/Patcher.csproj": {}
+  },
+  "projects": {
+    "/home/nikkuss/projects/riftworld/modding-engine-sad/engine/Patcher/Patcher.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/nikkuss/projects/riftworld/modding-engine-sad/engine/Patcher/Patcher.csproj",
+        "projectName": "Patcher",
+        "projectPath": "/home/nikkuss/projects/riftworld/modding-engine-sad/engine/Patcher/Patcher.csproj",
+        "packagesPath": "/home/nikkuss/.nuget/packages/",
+        "outputPath": "/home/nikkuss/projects/riftworld/modding-engine-sad/engine/Patcher/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/home/nikkuss/.local/share/godot/mono/GodotNuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/nikkuss/.nuget/NuGet/NuGet.Config",
+          "/home/nikkuss/.nuget/NuGet/config/Godot.Offline.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net4.8"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net4.8",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net4.8",
+          "dependencies": {
+            "Lib.Harmony": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net4.8</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.2.2" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>/home/nikkuss/Desktop/123123/RIFT_Data/Managed/Assembly-CSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>
