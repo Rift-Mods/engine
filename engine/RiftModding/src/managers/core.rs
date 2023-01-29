@@ -2,15 +2,15 @@ use std::{error::Error};
 
 use unity_rs::runtime::Runtime;
 
-use super::hooks;
+use crate::{utils::log, debug};
 
-pub fn version() -> &'static str {
-    "0.0.1"
-}
+
+use super::hooks;
 
 
 pub fn init() -> Result<(), Box<dyn Error>> {
-
+    log::init()?;
+    debug!("Logging initialized")?;
     hooks::init(
         Runtime::new()?.runtime
     )?;
